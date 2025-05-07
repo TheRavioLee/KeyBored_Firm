@@ -1,3 +1,6 @@
+"./Core/Src/interfaceDebouncing.o"
+"./Core/Src/interfaceKey.o"
+"./Core/Src/interfaceMatrice.o"
 "./Core/Src/main.o"
 "./Core/Src/pilote_COL.o"
 "./Core/Src/pilote_ROW.o"

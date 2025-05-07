@@ -29,6 +29,9 @@
 #include "pilote_ROW.h"
 #include "pilote_COL.h"
 
+#include "interfaceMatrice.h"
+#include "interfaceKey.h"
+#include "interfaceDebouncing.h"
 
 
 /* USER CODE END Includes */
@@ -130,6 +133,14 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
+//	when SysTick(1ms):
+
+//	  ScanMatrice();
+//	  DebounceMatrice();
+//	  ProcessKeys();
+
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

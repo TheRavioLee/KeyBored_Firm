@@ -64,6 +64,8 @@ extern "C" {
 #define ROW4 ROW4_Pin
 #define ROW5 ROW5_Pin
 
+#define DEBOUNCE_TIME_MS 5
+
 
 /* USER CODE END ET */
 
