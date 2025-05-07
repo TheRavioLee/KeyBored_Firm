@@ -37,6 +37,34 @@ extern "C" {
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
 
+#define NUM_COLS 14
+#define NUM_ROWS 5
+#define NUM_KEYS 64
+
+#define COL_PORT GPIOB
+#define COL1 COL1_Pin
+#define COL2 COL2_Pin
+#define COL3 COL3_Pin
+#define COL4 COL4_Pin
+#define COL5 COL5_Pin
+#define COL6 COL6_Pin
+#define COL7 COL7_Pin
+#define COL8 COL8_Pin
+#define COL9 COL9_Pin
+#define COL10 COL10_Pin
+#define COL11 COL11_Pin
+#define COL12 COL12_Pin
+#define COL13 COL13_Pin
+#define COL14 COL14_Pin
+
+#define ROW_PORT GPIOA
+#define ROW1 ROW1_Pin
+#define ROW2 ROW2_Pin
+#define ROW3 ROW3_Pin
+#define ROW4 ROW4_Pin
+#define ROW5 ROW5_Pin
+
+
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
