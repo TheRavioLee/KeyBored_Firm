@@ -28,6 +28,7 @@
 
 #include "pilote_ROW.h"
 #include "pilote_COL.h"
+#include "pilote_SK6803.h"
 
 #include "interfaceMatrice.h"
 #include "interfaceKey.h"
@@ -139,6 +140,7 @@ int main(void)
 //	  ScanMatrice();
 //	  DebounceMatrice();
 //	  ProcessKeys();
+//	  ProcessLeds();
 
 
     /* USER CODE END WHILE */

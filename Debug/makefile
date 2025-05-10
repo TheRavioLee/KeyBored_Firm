@@ -38,34 +38,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := KeyBored_Firm
+BUILD_ARTIFACT_NAME := KeyBored_alpha
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-KeyBored_Firm.elf \
+KeyBored_alpha.elf \
 
 MAP_FILES += \
-KeyBored_Firm.map \
+KeyBored_alpha.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-KeyBored_Firm.list \
+KeyBored_alpha.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: KeyBored_Firm.elf secondary-outputs
+main-build: KeyBored_alpha.elf secondary-outputs
 
 # Tool invocations
-KeyBored_Firm.elf KeyBored_Firm.map: $(OBJS) $(USER_OBJS) C:\Users\Thomas\STM32CubeIDE\workspace_1.18.1\KeyBored_Firm\STM32F072CBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "KeyBored_Firm.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\Thomas\STM32CubeIDE\workspace_1.18.1\KeyBored_Firm\STM32F072CBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="KeyBored_Firm.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+KeyBored_alpha.elf KeyBored_alpha.map: $(OBJS) $(USER_OBJS) /Users/thomaslajoie/STM32CubeIDE/workspace_1.18.0/KeyBored_alpha/STM32F072CBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "KeyBored_alpha.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"/Users/thomaslajoie/STM32CubeIDE/workspace_1.18.0/KeyBored_alpha/STM32F072CBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="KeyBored_alpha.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -74,14 +74,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-KeyBored_Firm.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "KeyBored_Firm.list"
+KeyBored_alpha.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "KeyBored_alpha.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) KeyBored_Firm.elf KeyBored_Firm.list KeyBored_Firm.map default.size.stdout
+	-$(RM) KeyBored_alpha.elf KeyBored_alpha.list KeyBored_alpha.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
