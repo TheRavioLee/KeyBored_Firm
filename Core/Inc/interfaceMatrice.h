@@ -8,6 +8,8 @@
 #ifndef INC_INTERFACEMATRICE_H_
 #define INC_INTERFACEMATRICE_H_
 
+#include "main.h"
+#include <stdbool.h>
 //Definitions publiques
 
 //Fonctions publiques

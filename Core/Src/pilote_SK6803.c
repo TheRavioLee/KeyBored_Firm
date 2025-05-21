@@ -9,7 +9,7 @@
 #include "main.h"
 #include "pilote_SK6803.h"
 
-#include "stm32f0xx_hal.h"
+//#include "stm32f0xx_hal.h"
 
 // LED color buffer
 uint8_t rgb_arr[TOTAL_BYTES] = {0};

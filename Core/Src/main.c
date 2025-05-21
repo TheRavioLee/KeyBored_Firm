@@ -33,7 +33,11 @@
 #include "interfaceMatrice.h"
 #include "interfaceKey.h"
 #include "interfaceDebouncing.h"
+#include "interface_RGB.h"
 
+#include "ServiceBaseTemps_1ms.h"
+#include "pilote_Timer14_1ms.h"
+#include "Processus_LEDS.h"
 
 /* USER CODE END Includes */
 
@@ -55,6 +59,7 @@
 /* Private variables ---------------------------------------------------------*/
 TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
+TIM_HandleTypeDef htim14;
 DMA_HandleTypeDef hdma_tim2_ch1;
 DMA_HandleTypeDef hdma_tim3_ch1_trig;
 
@@ -68,6 +73,7 @@ static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_TIM3_Init(void);
+static void MX_TIM14_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -91,6 +97,15 @@ typedef struct {
 
 keyboardReportDes HIDkeyboard = {0, 0, 0, 0, 0, 0, 0, 0};
 
+void Main_Init(void)
+{
+	piloteTimer14_initialise();
+	serviceBaseDeTemps_initialise();
+	Process_LEDS_init();
+}
+
+void doNothing(void){}
+
 /* USER CODE END 0 */
 
 /**
@@ -111,6 +126,8 @@ int main(void)
 
   /* USER CODE BEGIN Init */
 
+  Main_Init();
+
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -126,8 +143,14 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM3_Init();
   MX_USB_DEVICE_Init();
+  MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
 
+//  staticColorRGB(50, 100, 25);
+//  uint8_t switch_LED = 0;
+//  bool prevPressed[NUM_ROWS][NUM_COLS] = { false }; // Global or static
+
+  piloteTimer14_permetLesInterruptions();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -141,6 +164,42 @@ int main(void)
 //	  DebounceMatrice();
 //	  ProcessKeys();
 //	  ProcessLeds();
+
+//	  effet_Rainbow(10);
+//	  effet_RainbowSwirl(127);
+//	  FadeInOut(127, 127, 0);
+//	  effet_Breathing(50);
+//	  HAL_Delay(1);
+//	  ScanMatrice();
+//	  debounce_switch_matrix();
+//	  HAL_Delay(10);
+//
+//	  for(int i = 0; i < NUM_ROWS; i++)
+//	  {
+//		  for(int j = 0; j < NUM_COLS; j++)
+//		  {
+//			  bool currentPressed = (matriceDebouncing[i][j].state == PRESSED);
+//
+//			  // Detect rising edge: it was not pressed before, but now it is
+//			  if (currentPressed && !prevPressed[i][j]) {
+//				  // >>> Trigger the action once
+//				  switch_LED++;
+//				  if (switch_LED > 3)
+//					  switch_LED = 1;
+//
+//				  switch (switch_LED) {
+//					  case 1: staticColorRGB(127, 0, 0); break;
+//					  case 2: staticColorRGB(0, 127, 0); break;
+//					  case 3: staticColorRGB(0, 0, 127); break;
+//					  default: staticColorRGB(127, 127, 127); break;
+//				  }
+//			  }
+//
+//			  // Save state for next loop
+//			  prevPressed[i][j] = currentPressed;
+//		  }
+//	  }
+
 
 
     /* USER CODE END WHILE */
@@ -307,6 +366,37 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 2 */
   HAL_TIM_MspPostInit(&htim3);
+
+}
+
+/**
+  * @brief TIM14 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM14_Init(void)
+{
+
+  /* USER CODE BEGIN TIM14_Init 0 */
+
+  /* USER CODE END TIM14_Init 0 */
+
+  /* USER CODE BEGIN TIM14_Init 1 */
+
+  /* USER CODE END TIM14_Init 1 */
+  htim14.Instance = TIM14;
+  htim14.Init.Prescaler = 0;
+  htim14.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim14.Init.Period = 65535;
+  htim14.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim14.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim14) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM14_Init 2 */
+
+  /* USER CODE END TIM14_Init 2 */
 
 }
 

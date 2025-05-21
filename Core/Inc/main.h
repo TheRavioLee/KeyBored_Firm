@@ -64,8 +64,14 @@ extern "C" {
 #define ROW4 ROW4_Pin
 #define ROW5 ROW5_Pin
 
-#define DEBOUNCE_TIME_MS 5
+#define DEBOUNCE_TIME_MS 10
 
+
+#define SERVICEBASEDETEMPS_NOMBRE_DE_PHASES 33
+#define PROCESSUS_LEDS_PHASE 32
+
+//Fonction publiques
+void doNothing(void);
 
 /* USER CODE END ET */
 

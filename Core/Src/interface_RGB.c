@@ -7,6 +7,10 @@
 
 //INCLUDES
 #include "main.h"
+
+#include <math.h>
+#include <stdlib.h>
+
 #include "pilote_SK6803.h"
 
 const uint8_t led_map[64] = {
@@ -65,7 +69,7 @@ void effet_Rainbow(uint8_t brightness)
 		// Set correct LED position
 		uint8_t led_index = led_map[i];
 		// Calculate color
-		uint32_t rgb_color = hsl_to_rgb(angle + (i * angle_difference), 255, brightness);
+		uint32_t rgb_color = hsl_to_rgb(angle + ((LED_CNT - 1 - i) * angle_difference), 255, brightness);
 		// Set color
 		led_set_RGB(led_index, (rgb_color >> 16) & 0xFF, (rgb_color >> 8) & 0xFF, rgb_color & 0xFF);
 	}
@@ -76,15 +80,71 @@ void effet_Rainbow(uint8_t brightness)
 }
 
 
-void staticColor(uint8_t h, uint8_t s, uint8_t l)
+
+//CHAT GPT
+
+void effet_RainbowSwirl(uint8_t brightness)
 {
-	uint32_t rgb_color = hsl_to_rgb(h, s, l);
+    static uint8_t angle = 0;
+    const uint8_t swirl_spacing = 10;
+
+    for (uint8_t i = 0; i < LED_CNT; i++) {
+        uint8_t led_index = led_map[i];
+        uint32_t color = hsl_to_rgb((angle + i * swirl_spacing), 255, brightness);
+        led_set_RGB(led_index, (color >> 16) & 0xFF, (color >> 8) & 0xFF, color & 0xFF);
+    }
+
+    angle++;
+    led_render();
+}
+
+void effet_Breathing(uint8_t hue)
+{
+    static uint8_t brightness = 0;
+    static int8_t direction = 1;
+
+    // Adjust brightness
+    brightness += direction;
+    if (brightness == 0 || brightness == 127) direction = -direction;
+
+    // Set all LEDs to the same color with fading
+    uint32_t rgb = hsl_to_rgb(hue, 255, brightness); // Static hue
+    uint8_t r = (rgb >> 16) & 0xFF;
+    uint8_t g = (rgb >> 8) & 0xFF;
+    uint8_t b = rgb & 0xFF;
+
+    led_set_all_RGB(r, g, b);
+    led_render();
+}
+
+
+
+void staticColor(uint8_t hue, uint8_t sat, uint8_t brightness)
+{
+	uint32_t rgb_color = hsl_to_rgb(hue, sat, brightness);
 	led_set_all_RGB((rgb_color >> 16) & 0xFF, (rgb_color >> 8) & 0xFF, rgb_color & 0xFF);
 	led_render();
 }
 
+void staticColorRGB(uint8_t red, uint8_t green, uint8_t blue)
+{
+	led_set_all_RGB(red, green, blue);
+	led_render();
+}
 
-void effet_Touche(uint8_t hue, uint8_t sat, uint8_t brightness, uint8_t led_index)
+void effet_Touche_reactif(uint8_t hue, uint8_t sat, uint8_t brightness, uint8_t led_index)
+{
+
+}
+
+
+void effet_Ligne(uint8_t hue, uint8_t brightness)
+{
+
+}
+
+
+void effet_Ligne_reactif(uint8_t hue, uint8_t brightness)
 {
 
 }

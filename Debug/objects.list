@@ -1,3 +1,5 @@
+"./Core/Src/Processus_LEDS.o"
+"./Core/Src/ServiceBaseTemps_1ms.o"
 "./Core/Src/interfaceDebouncing.o"
 "./Core/Src/interfaceKey.o"
 "./Core/Src/interfaceMatrice.o"
@@ -6,6 +8,7 @@
 "./Core/Src/pilote_COL.o"
 "./Core/Src/pilote_ROW.o"
 "./Core/Src/pilote_SK6803.o"
+"./Core/Src/pilote_Timer14_1ms.o"
 "./Core/Src/stm32f0xx_hal_msp.o"
 "./Core/Src/stm32f0xx_it.o"
 "./Core/Src/syscalls.o"

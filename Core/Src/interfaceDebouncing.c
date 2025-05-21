@@ -12,6 +12,8 @@
 #include "interfaceDebouncing.h"
 
 
+KeyState matriceDebouncing[NUM_ROWS][NUM_COLS];
+
 //Definitions fonctions publiques
 void debounce_switch_matrix(void) {
     for (int row = 0; row < NUM_ROWS; row++) {

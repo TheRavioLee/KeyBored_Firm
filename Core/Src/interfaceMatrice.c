@@ -12,6 +12,7 @@
 #include "pilote_ROW.h"
 #include "pilote_COL.h"
 
+bool matrice[NUM_ROWS][NUM_COLS];
 
 //Definition fonctions publiques
 void ScanMatrice(void)

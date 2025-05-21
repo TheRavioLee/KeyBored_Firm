@@ -29,8 +29,8 @@ Core/Src/interfaceDebouncing.o: ../Core/Src/interfaceDebouncing.c \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h \
- ../Core/Inc/interfaceMatrice.h ../Core/Inc/interfaceDebouncing.h \
- ../Core/Inc/main.h
+ ../Core/Inc/interfaceMatrice.h ../Core/Inc/main.h \
+ ../Core/Inc/interfaceDebouncing.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:
 ../Core/Inc/stm32f0xx_hal_conf.h:
@@ -63,5 +63,5 @@ Core/Src/interfaceDebouncing.o: ../Core/Src/interfaceDebouncing.c \
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h:
 ../Core/Inc/interfaceMatrice.h:
-../Core/Inc/interfaceDebouncing.h:
 ../Core/Inc/main.h:
+../Core/Inc/interfaceDebouncing.h:
