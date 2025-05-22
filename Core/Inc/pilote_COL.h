@@ -9,7 +9,6 @@
 #define INC_PILOTE_COL_H_
 
 //Fonctions publiques
-void Set_Column(uint16_t col_index);
-void Reset_Column(uint16_t col_index);
+bool Read_Col(uint16_t col_index);
 
 #endif /* INC_PILOTE_COL_H_ */

@@ -1,1 +1,2 @@
-../Core/Src/interfaceMatrice.c:18:6:ScanMatrice	3
+../Core/Src/interfaceMatrice.c:35:6:ScanMatrice	3
+../Core/Src/interfaceMatrice.c:52:6:InterfaceMatrice_Init	1

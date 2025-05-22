@@ -1,1 +1,3 @@
-../Core/Src/pilote_ROW.c:15:6:Read_Row	16	static
+../Core/Src/pilote_ROW.c:15:6:Set_Row	16	static
+../Core/Src/pilote_ROW.c:20:6:Reset_Row	16	static
+../Core/Src/pilote_ROW.c:25:6:Set_All_Rows	16	static

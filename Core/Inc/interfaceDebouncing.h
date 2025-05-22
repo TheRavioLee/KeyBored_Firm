@@ -23,9 +23,9 @@ typedef struct {
     uint8_t debounce_counter;
 } KeyState;
 
-
+void InterfaceDebouncing_Init(void);
 //Fonctions publiques
-void debounce_switch_matrix(void);
+void Debounce_Switch_Matrix(void);
 
 //Variables publiques
 extern KeyState matriceDebouncing[NUM_ROWS][NUM_COLS];

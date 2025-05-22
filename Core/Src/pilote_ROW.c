@@ -12,7 +12,21 @@
 
 uint16_t row_pin[NUM_ROWS] = { ROW1, ROW2, ROW3, ROW4, ROW5};
 
-bool Read_Row(uint16_t row_index)
+void Set_Row(uint16_t row_index)
 {
-	return HAL_GPIO_ReadPin(ROW_PORT, row_index);
+	HAL_GPIO_WritePin(ROW_PORT, row_pin[row_index], GPIO_PIN_SET);
 }
+
+void Reset_Row(uint16_t row_index)
+{
+	HAL_GPIO_WritePin(ROW_PORT, row_pin[row_index], GPIO_PIN_RESET);
+}
+
+void Set_All_Rows(void)
+{
+	for(int i = 0; i < NUM_ROWS; i++)
+	{
+		Set_Row(i);
+	}
+}
+

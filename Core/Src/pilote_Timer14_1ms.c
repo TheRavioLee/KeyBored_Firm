@@ -6,7 +6,7 @@
  */
 #include "main.h"
 #include "pilote_Timer14_1ms.h"
-
+#include "interfaceMatrice.h"
 //Declarations de fonctions privees:
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
 
@@ -25,7 +25,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   if (htim == &htim14)
   {
-    piloteTimer14_execute();
+	  piloteTimer14_execute();
   }
 }
 

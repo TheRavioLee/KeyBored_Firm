@@ -13,13 +13,6 @@
 //Fonctions privees
 void Process_LEDS(void);
 
-
-
-void Process_LEDS_init(void)
-{
-  serviceBaseDeTemps_execute[PROCESSUS_LEDS_PHASE] = Process_LEDS;
-}
-
 void Process_LEDS(void)
 {
 	static uint8_t compteur_LEDS;
@@ -28,7 +21,28 @@ void Process_LEDS(void)
 
 	if(compteur_LEDS > 30)
 	{
-		effet_Rainbow(10);
+		Processus_LEDS_execute[leds.phase](leds.hue, leds.brightness);
 		compteur_LEDS = 0;
 	}
 }
+
+//Variables publiques
+void (*Processus_LEDS_execute[PROCESSUS_LEDS_NB_PHASE])(uint8_t hue, uint8_t brightness);
+
+LEDS leds;
+
+//Fonctions publiques
+void ProcessusLEDS_init(void)
+{
+  serviceBaseDeTemps_execute[PROCESSUS_LEDS_PHASE] = Process_LEDS;
+  Processus_LEDS_execute[LEDS_RAINBOW_PHASE] = effet_Rainbow;
+  Processus_LEDS_execute[LEDS_BREATHING_PHASE] = effet_Breathing;
+  Processus_LEDS_execute[LEDS_STATIC_PHASE] = effet_StaticColor;
+  leds.hue = ORANGE_HUE;
+  leds.phase = LEDS_STATIC_PHASE;
+  leds.brightness = 20;
+}
+
+
+
+

@@ -5,10 +5,10 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Core/Src/Processus_Keys.c \
 ../Core/Src/Processus_LEDS.c \
 ../Core/Src/ServiceBaseTemps_1ms.c \
 ../Core/Src/interfaceDebouncing.c \
-../Core/Src/interfaceKey.c \
 ../Core/Src/interfaceMatrice.c \
 ../Core/Src/interface_RGB.c \
 ../Core/Src/main.c \
@@ -23,10 +23,10 @@ C_SRCS += \
 ../Core/Src/system_stm32f0xx.c 
 
 OBJS += \
+./Core/Src/Processus_Keys.o \
 ./Core/Src/Processus_LEDS.o \
 ./Core/Src/ServiceBaseTemps_1ms.o \
 ./Core/Src/interfaceDebouncing.o \
-./Core/Src/interfaceKey.o \
 ./Core/Src/interfaceMatrice.o \
 ./Core/Src/interface_RGB.o \
 ./Core/Src/main.o \
@@ -41,10 +41,10 @@ OBJS += \
 ./Core/Src/system_stm32f0xx.o 
 
 C_DEPS += \
+./Core/Src/Processus_Keys.d \
 ./Core/Src/Processus_LEDS.d \
 ./Core/Src/ServiceBaseTemps_1ms.d \
 ./Core/Src/interfaceDebouncing.d \
-./Core/Src/interfaceKey.d \
 ./Core/Src/interfaceMatrice.d \
 ./Core/Src/interface_RGB.d \
 ./Core/Src/main.d \
@@ -66,7 +66,7 @@ Core/Src/%.o Core/Src/%.su Core/Src/%.cyclo: ../Core/Src/%.c Core/Src/subdir.mk
 clean: clean-Core-2f-Src
 
 clean-Core-2f-Src:
-	-$(RM) ./Core/Src/Processus_LEDS.cyclo ./Core/Src/Processus_LEDS.d ./Core/Src/Processus_LEDS.o ./Core/Src/Processus_LEDS.su ./Core/Src/ServiceBaseTemps_1ms.cyclo ./Core/Src/ServiceBaseTemps_1ms.d ./Core/Src/ServiceBaseTemps_1ms.o ./Core/Src/ServiceBaseTemps_1ms.su ./Core/Src/interfaceDebouncing.cyclo ./Core/Src/interfaceDebouncing.d ./Core/Src/interfaceDebouncing.o ./Core/Src/interfaceDebouncing.su ./Core/Src/interfaceKey.cyclo ./Core/Src/interfaceKey.d ./Core/Src/interfaceKey.o ./Core/Src/interfaceKey.su ./Core/Src/interfaceMatrice.cyclo ./Core/Src/interfaceMatrice.d ./Core/Src/interfaceMatrice.o ./Core/Src/interfaceMatrice.su ./Core/Src/interface_RGB.cyclo ./Core/Src/interface_RGB.d ./Core/Src/interface_RGB.o ./Core/Src/interface_RGB.su ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/pilote_COL.cyclo ./Core/Src/pilote_COL.d ./Core/Src/pilote_COL.o ./Core/Src/pilote_COL.su ./Core/Src/pilote_ROW.cyclo ./Core/Src/pilote_ROW.d ./Core/Src/pilote_ROW.o ./Core/Src/pilote_ROW.su ./Core/Src/pilote_SK6803.cyclo ./Core/Src/pilote_SK6803.d ./Core/Src/pilote_SK6803.o ./Core/Src/pilote_SK6803.su ./Core/Src/pilote_Timer14_1ms.cyclo ./Core/Src/pilote_Timer14_1ms.d ./Core/Src/pilote_Timer14_1ms.o ./Core/Src/pilote_Timer14_1ms.su ./Core/Src/stm32f0xx_hal_msp.cyclo ./Core/Src/stm32f0xx_hal_msp.d ./Core/Src/stm32f0xx_hal_msp.o ./Core/Src/stm32f0xx_hal_msp.su ./Core/Src/stm32f0xx_it.cyclo ./Core/Src/stm32f0xx_it.d ./Core/Src/stm32f0xx_it.o ./Core/Src/stm32f0xx_it.su ./Core/Src/syscalls.cyclo ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.cyclo ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32f0xx.cyclo ./Core/Src/system_stm32f0xx.d ./Core/Src/system_stm32f0xx.o ./Core/Src/system_stm32f0xx.su
+	-$(RM) ./Core/Src/Processus_Keys.cyclo ./Core/Src/Processus_Keys.d ./Core/Src/Processus_Keys.o ./Core/Src/Processus_Keys.su ./Core/Src/Processus_LEDS.cyclo ./Core/Src/Processus_LEDS.d ./Core/Src/Processus_LEDS.o ./Core/Src/Processus_LEDS.su ./Core/Src/ServiceBaseTemps_1ms.cyclo ./Core/Src/ServiceBaseTemps_1ms.d ./Core/Src/ServiceBaseTemps_1ms.o ./Core/Src/ServiceBaseTemps_1ms.su ./Core/Src/interfaceDebouncing.cyclo ./Core/Src/interfaceDebouncing.d ./Core/Src/interfaceDebouncing.o ./Core/Src/interfaceDebouncing.su ./Core/Src/interfaceMatrice.cyclo ./Core/Src/interfaceMatrice.d ./Core/Src/interfaceMatrice.o ./Core/Src/interfaceMatrice.su ./Core/Src/interface_RGB.cyclo ./Core/Src/interface_RGB.d ./Core/Src/interface_RGB.o ./Core/Src/interface_RGB.su ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/pilote_COL.cyclo ./Core/Src/pilote_COL.d ./Core/Src/pilote_COL.o ./Core/Src/pilote_COL.su ./Core/Src/pilote_ROW.cyclo ./Core/Src/pilote_ROW.d ./Core/Src/pilote_ROW.o ./Core/Src/pilote_ROW.su ./Core/Src/pilote_SK6803.cyclo ./Core/Src/pilote_SK6803.d ./Core/Src/pilote_SK6803.o ./Core/Src/pilote_SK6803.su ./Core/Src/pilote_Timer14_1ms.cyclo ./Core/Src/pilote_Timer14_1ms.d ./Core/Src/pilote_Timer14_1ms.o ./Core/Src/pilote_Timer14_1ms.su ./Core/Src/stm32f0xx_hal_msp.cyclo ./Core/Src/stm32f0xx_hal_msp.d ./Core/Src/stm32f0xx_hal_msp.o ./Core/Src/stm32f0xx_hal_msp.su ./Core/Src/stm32f0xx_it.cyclo ./Core/Src/stm32f0xx_it.d ./Core/Src/stm32f0xx_it.o ./Core/Src/stm32f0xx_it.su ./Core/Src/syscalls.cyclo ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.cyclo ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32f0xx.cyclo ./Core/Src/system_stm32f0xx.d ./Core/Src/system_stm32f0xx.o ./Core/Src/system_stm32f0xx.su
 
 .PHONY: clean-Core-2f-Src
 

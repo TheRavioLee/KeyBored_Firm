@@ -30,7 +30,8 @@ Core/Src/interfaceMatrice.o: ../Core/Src/interfaceMatrice.c \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h \
  ../Core/Inc/interfaceMatrice.h ../Core/Inc/main.h \
- ../Core/Inc/pilote_ROW.h ../Core/Inc/pilote_COL.h
+ ../Core/Inc/pilote_ROW.h ../Core/Inc/pilote_COL.h \
+ ../Core/Inc/ServiceBaseTemps_1ms.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:
 ../Core/Inc/stm32f0xx_hal_conf.h:
@@ -66,3 +67,4 @@ Core/Src/interfaceMatrice.o: ../Core/Src/interfaceMatrice.c \
 ../Core/Inc/main.h:
 ../Core/Inc/pilote_ROW.h:
 ../Core/Inc/pilote_COL.h:
+../Core/Inc/ServiceBaseTemps_1ms.h:

@@ -29,7 +29,8 @@ Core/Src/pilote_Timer14_1ms.o: ../Core/Src/pilote_Timer14_1ms.c \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h \
- ../Core/Inc/pilote_Timer14_1ms.h
+ ../Core/Inc/pilote_Timer14_1ms.h ../Core/Inc/interfaceMatrice.h \
+ ../Core/Inc/main.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:
 ../Core/Inc/stm32f0xx_hal_conf.h:
@@ -62,3 +63,5 @@ Core/Src/pilote_Timer14_1ms.o: ../Core/Src/pilote_Timer14_1ms.c \
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h:
 ../Core/Inc/pilote_Timer14_1ms.h:
+../Core/Inc/interfaceMatrice.h:
+../Core/Inc/main.h:

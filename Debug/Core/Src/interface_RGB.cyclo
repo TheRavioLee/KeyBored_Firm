@@ -1,9 +1,4 @@
-../Core/Src/interface_RGB.c:30:10:hsl_to_rgb	9
-../Core/Src/interface_RGB.c:61:6:effet_Rainbow	2
-../Core/Src/interface_RGB.c:86:6:effet_RainbowSwirl	2
-../Core/Src/interface_RGB.c:101:6:effet_Breathing	3
-../Core/Src/interface_RGB.c:122:6:staticColor	1
-../Core/Src/interface_RGB.c:129:6:staticColorRGB	1
-../Core/Src/interface_RGB.c:135:6:effet_Touche_reactif	1
-../Core/Src/interface_RGB.c:141:6:effet_Ligne	1
-../Core/Src/interface_RGB.c:147:6:effet_Ligne_reactif	1
+../Core/Src/interface_RGB.c:31:10:hsl_to_rgb	9
+../Core/Src/interface_RGB.c:62:6:effet_Rainbow	2
+../Core/Src/interface_RGB.c:84:6:effet_Breathing	3
+../Core/Src/interface_RGB.c:105:6:effet_StaticColor	1

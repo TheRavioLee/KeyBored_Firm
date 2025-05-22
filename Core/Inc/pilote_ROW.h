@@ -10,6 +10,8 @@
 
 
 //Fonctions publiques
-bool Read_Row(uint16_t row_index);
+void Set_Row(uint16_t row_index);
+void Reset_Row(uint16_t row_index);
+void Set_All_Rows(void);
 
 #endif /* INC_PILOTE_ROW_H_ */

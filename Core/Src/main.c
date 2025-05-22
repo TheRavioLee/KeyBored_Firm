@@ -29,15 +29,16 @@
 #include "pilote_ROW.h"
 #include "pilote_COL.h"
 #include "pilote_SK6803.h"
+#include "pilote_Timer14_1ms.h"
 
 #include "interfaceMatrice.h"
-#include "interfaceKey.h"
 #include "interfaceDebouncing.h"
 #include "interface_RGB.h"
 
 #include "ServiceBaseTemps_1ms.h"
-#include "pilote_Timer14_1ms.h"
+
 #include "Processus_LEDS.h"
+#include "Processus_Keys.h"
 
 /* USER CODE END Includes */
 
@@ -101,7 +102,10 @@ void Main_Init(void)
 {
 	piloteTimer14_initialise();
 	serviceBaseDeTemps_initialise();
-	Process_LEDS_init();
+	InterfaceMatrice_Init();
+	InterfaceDebouncing_Init();
+	ProcessusKeys_Init();
+	ProcessusLEDS_init();
 }
 
 void doNothing(void){}
@@ -146,11 +150,8 @@ int main(void)
   MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
 
-//  staticColorRGB(50, 100, 25);
-//  uint8_t switch_LED = 0;
-//  bool prevPressed[NUM_ROWS][NUM_COLS] = { false }; // Global or static
-
   piloteTimer14_permetLesInterruptions();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -158,48 +159,14 @@ int main(void)
   while (1)
   {
 
-//	when SysTick(1ms):
-
-//	  ScanMatrice();
-//	  DebounceMatrice();
-//	  ProcessKeys();
-//	  ProcessLeds();
-
-//	  effet_Rainbow(10);
+//	  effet_Rainbow(10, 20);
 //	  effet_RainbowSwirl(127);
 //	  FadeInOut(127, 127, 0);
 //	  effet_Breathing(50);
-//	  HAL_Delay(1);
+//	  HAL_Delay(10);
 //	  ScanMatrice();
 //	  debounce_switch_matrix();
-//	  HAL_Delay(10);
-//
-//	  for(int i = 0; i < NUM_ROWS; i++)
-//	  {
-//		  for(int j = 0; j < NUM_COLS; j++)
-//		  {
-//			  bool currentPressed = (matriceDebouncing[i][j].state == PRESSED);
-//
-//			  // Detect rising edge: it was not pressed before, but now it is
-//			  if (currentPressed && !prevPressed[i][j]) {
-//				  // >>> Trigger the action once
-//				  switch_LED++;
-//				  if (switch_LED > 3)
-//					  switch_LED = 1;
-//
-//				  switch (switch_LED) {
-//					  case 1: staticColorRGB(127, 0, 0); break;
-//					  case 2: staticColorRGB(0, 127, 0); break;
-//					  case 3: staticColorRGB(0, 0, 127); break;
-//					  default: staticColorRGB(127, 127, 127); break;
-//				  }
-//			  }
-//
-//			  // Save state for next loop
-//			  prevPressed[i][j] = currentPressed;
-//		  }
-//	  }
-
+//	  HAL_Delay(1);
 
 
     /* USER CODE END WHILE */
@@ -433,15 +400,20 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, COL1_Pin|COL2_Pin|COL3_Pin|COL11_Pin
-                          |COL12_Pin|COL13_Pin|COL14_Pin|COL4_Pin
-                          |COL5_Pin|COL6_Pin|COL7_Pin|COL8_Pin
-                          |COL9_Pin|COL10_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, ROW1_Pin|ROW2_Pin|ROW3_Pin|ROW4_Pin
+                          |ROW5_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : ROW1_Pin ROW2_Pin ROW3_Pin ROW4_Pin
-                           ROW5_Pin OS1_Pin OS2_Pin OS3_Pin */
+                           ROW5_Pin */
   GPIO_InitStruct.Pin = ROW1_Pin|ROW2_Pin|ROW3_Pin|ROW4_Pin
-                          |ROW5_Pin|OS1_Pin|OS2_Pin|OS3_Pin;
+                          |ROW5_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : OS1_Pin OS2_Pin OS3_Pin */
+  GPIO_InitStruct.Pin = OS1_Pin|OS2_Pin|OS3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -454,9 +426,8 @@ static void MX_GPIO_Init(void)
                           |COL12_Pin|COL13_Pin|COL14_Pin|COL4_Pin
                           |COL5_Pin|COL6_Pin|COL7_Pin|COL8_Pin
                           |COL9_Pin|COL10_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */

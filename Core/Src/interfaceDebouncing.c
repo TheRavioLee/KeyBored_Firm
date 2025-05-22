@@ -10,12 +10,13 @@
 #include <stdbool.h>
 #include "interfaceMatrice.h"
 #include "interfaceDebouncing.h"
+#include "ServiceBaseTemps_1ms.h"
 
 
 KeyState matriceDebouncing[NUM_ROWS][NUM_COLS];
 
 //Definitions fonctions publiques
-void debounce_switch_matrix(void) {
+void Debounce_Switch_Matrix(void) {
     for (int row = 0; row < NUM_ROWS; row++) {
         for (int col = 0; col < NUM_COLS; col++) {
             bool physicalState = matrice[row][col];
@@ -55,4 +56,9 @@ void debounce_switch_matrix(void) {
             }
         }
     }
+}
+
+void InterfaceDebouncing_Init(void)
+{
+	serviceBaseDeTemps_execute[DEBOUNCE_MATRICE_PHASE] = Debounce_Switch_Matrix;
 }

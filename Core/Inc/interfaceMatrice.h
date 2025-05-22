@@ -15,6 +15,8 @@
 //Fonctions publiques
 void ScanMatrice(void);
 
+void InterfaceMatrice_Init(void);
+
 //Variables publiques
 extern bool matrice[NUM_ROWS][NUM_COLS];
 

@@ -8,9 +8,26 @@
 #ifndef INC_PROCESSUS_LEDS_H_
 #define INC_PROCESSUS_LEDS_H_
 
+#include "interface_RGB.h" // pour defines dans header
 
-void Process_LEDS_init(void);
+#define PROCESSUS_LEDS_NB_PHASE 3
+#define LEDS_RAINBOW_PHASE 0
+#define LEDS_BREATHING_PHASE 1
+#define LEDS_STATIC_PHASE 2
 
+void ProcessusLEDS_init(void);
+
+typedef struct
+{
+	uint8_t hue;
+	uint8_t brightness;
+	uint8_t phase;
+} LEDS;
+
+extern LEDS leds;
+
+
+extern void (*Processus_LEDS_execute[PROCESSUS_LEDS_NB_PHASE])(uint8_t hue, uint8_t brighntess);
 
 
 #endif /* INC_PROCESSUS_LEDS_H_ */

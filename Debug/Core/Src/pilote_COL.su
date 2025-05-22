@@ -1,2 +1,1 @@
-../Core/Src/pilote_COL.c:17:6:Set_Column	16	static
-../Core/Src/pilote_COL.c:22:6:Reset_Column	16	static
+../Core/Src/pilote_COL.c:17:6:Read_Col	16	static
