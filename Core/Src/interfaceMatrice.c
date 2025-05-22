@@ -15,23 +15,6 @@
 
 bool matrice[NUM_ROWS][NUM_COLS];
 
-//Definition fonctions publiques
-//void ScanMatrice(void)
-//{
-//	Reset_All_Columns();
-//
-//	for(int col = 0; col < NUM_COLS; col++)
-//	{
-//		Set_Column(col);
-//
-//		for(int row = 0; row < NUM_ROWS; row++)
-//		{
-//			matrice[row][col] = Read_Row(row);
-//		}
-//
-//		Reset_Column(col);
-//	}
-//}
 void ScanMatrice(void)
 {
 	Set_All_Rows();

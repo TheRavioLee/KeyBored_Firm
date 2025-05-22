@@ -26,17 +26,27 @@ void Process_KEYS(void)
 {
 	static bool wasActionDone = false;
 	static uint8_t i = 0;
+	static uint8_t last_row;
+	static uint8_t last_col;
 
-	if(matriceDebouncing[4][5].state == PRESSED && wasActionDone == false)
+	for(int row = 0; row < NUM_ROWS; row++)
 	{
-		i++;
-		if(i > 2) { i = 0; }
+		for (int col = 0; col < NUM_COLS; col++)
+		{
+			if(matriceDebouncing[row][col].state == PRESSED && wasActionDone == false)
+			{
+				i++;
+				if(i > 2) { i = 0; }
 
-		leds.phase = i;
+				leds.phase = i;
 
-		wasActionDone = true;
+				wasActionDone = true;
+				last_row = row;
+				last_col = col;
+			}
+		}
 	}
-	if(matriceDebouncing[4][5].state == IDLE && wasActionDone == true)
+	if(matriceDebouncing[last_row][last_col].state == IDLE && wasActionDone == true)
 	{
 		wasActionDone = false;
 	}

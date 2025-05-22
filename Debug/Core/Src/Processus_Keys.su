@@ -1,2 +1,2 @@
 ../Core/Src/Processus_Keys.c:20:6:ProcessusKeys_Init	8	static
-../Core/Src/Processus_Keys.c:25:6:Process_KEYS	8	static
+../Core/Src/Processus_Keys.c:25:6:Process_KEYS	16	static
