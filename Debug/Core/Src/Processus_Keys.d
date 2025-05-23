@@ -29,10 +29,10 @@ Core/Src/Processus_Keys.o: ../Core/Src/Processus_Keys.c \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h \
- ../Core/Inc/interface_RGB.h ../Core/Inc/interfaceMatrice.h \
- ../Core/Inc/main.h ../Core/Inc/interfaceDebouncing.h \
- ../Core/Inc/ServiceBaseTemps_1ms.h ../Core/Inc/Processus_LEDS.h \
- ../Core/Inc/interface_RGB.h
+ ../Core/Inc/interface_RGB.h ../Core/Inc/Processus_LEDS.h \
+ ../Core/Inc/interfaceMatrice.h ../Core/Inc/main.h \
+ ../Core/Inc/interfaceDebouncing.h ../Core/Inc/ServiceBaseTemps_1ms.h \
+ ../Core/Inc/Processus_LEDS.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:
 ../Core/Inc/stm32f0xx_hal_conf.h:
@@ -65,9 +65,9 @@ Core/Src/Processus_Keys.o: ../Core/Src/Processus_Keys.c \
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h:
 ../Core/Inc/interface_RGB.h:
+../Core/Inc/Processus_LEDS.h:
 ../Core/Inc/interfaceMatrice.h:
 ../Core/Inc/main.h:
 ../Core/Inc/interfaceDebouncing.h:
 ../Core/Inc/ServiceBaseTemps_1ms.h:
 ../Core/Inc/Processus_LEDS.h:
-../Core/Inc/interface_RGB.h:

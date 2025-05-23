@@ -19,15 +19,15 @@ void Process_LEDS(void)
 
 	compteur_LEDS++;
 
-	if(compteur_LEDS > 30)
+	if(compteur_LEDS > 30)//update 30ms = ~30fps
 	{
-		Processus_LEDS_execute[leds.phase](leds.hue, leds.brightness);
+		Processus_LEDS_execute[leds.phase](leds);
 		compteur_LEDS = 0;
 	}
 }
 
 //Variables publiques
-void (*Processus_LEDS_execute[PROCESSUS_LEDS_NB_PHASE])(uint8_t hue, uint8_t brightness);
+void (*Processus_LEDS_execute[PROCESSUS_LEDS_NB_PHASE])(LEDS led_param);
 
 LEDS leds;
 
@@ -38,9 +38,12 @@ void ProcessusLEDS_init(void)
   Processus_LEDS_execute[LEDS_RAINBOW_PHASE] = effet_Rainbow;
   Processus_LEDS_execute[LEDS_BREATHING_PHASE] = effet_Breathing;
   Processus_LEDS_execute[LEDS_STATIC_PHASE] = effet_StaticColor;
-  leds.hue = ORANGE_HUE;
-  leds.phase = LEDS_STATIC_PHASE;
-  leds.brightness = 20;
+  Processus_LEDS_execute[LEDS_RAINBOW_BREATHING_PHASE] = effet_Rainbow_Breathing;
+  Processus_LEDS_execute[LEDS_KEY_RESPONSE_PHASE] = effet_Key_Responsive;
+  leds.hue = RED_HUE;
+  leds.phase = LEDS_KEY_RESPONSE_PHASE;
+  leds.brightness = MAX_BRIGHTNESS;
+  leds.position = 65;
 }
 
 

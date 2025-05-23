@@ -158,15 +158,6 @@ int main(void)
   while (1)
   {
 
-//	  effet_Rainbow(10, 20);
-//	  effet_RainbowSwirl(127);
-//	  FadeInOut(127, 127, 0);
-//	  effet_Breathing(50);
-//	  HAL_Delay(10);
-//	  ScanMatrice();
-//	  debounce_switch_matrix();
-//	  HAL_Delay(1);
-
 
     /* USER CODE END WHILE */
 

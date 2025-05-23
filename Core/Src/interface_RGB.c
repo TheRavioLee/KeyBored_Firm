@@ -59,7 +59,7 @@ uint32_t hsl_to_rgb(uint8_t h, uint8_t s, uint8_t l)
 }
 
 
-void effet_Rainbow(uint8_t hue, uint8_t brightness)
+void effet_Rainbow(LEDS led_param)
 {
 	static int8_t angle = 0;
 	const uint8_t angle_difference = 18;
@@ -70,7 +70,7 @@ void effet_Rainbow(uint8_t hue, uint8_t brightness)
 		// Set correct LED position
 		uint8_t led_index = led_map[i];
 		// Calculate color
-		uint32_t rgb_color = hsl_to_rgb(angle + ((LED_CNT - 1 - i) * angle_difference), 255, brightness);
+		uint32_t rgb_color = hsl_to_rgb(angle + ((LED_CNT - 1 - i) * angle_difference), 255, led_param.brightness);
 		// Set color
 		led_set_RGB(led_index, (rgb_color >> 16) & 0xFF, (rgb_color >> 8) & 0xFF, rgb_color & 0xFF);
 	}
@@ -81,17 +81,17 @@ void effet_Rainbow(uint8_t hue, uint8_t brightness)
 }
 
 
-void effet_Breathing(uint8_t hue, uint8_t brightness)
+void effet_Breathing(LEDS led_param)
 {
     static uint8_t current_brightness = 0;
     static int8_t direction = 1;
 
     // Adjust brightness
     current_brightness += direction;
-    if (current_brightness == MIN_BRIGHTNESS || current_brightness == /*MAX*/brightness) direction = -direction;
+    if (current_brightness == MIN_BRIGHTNESS || current_brightness == /*MAX*/led_param.brightness) direction = -direction;
 
     // Set all LEDs to the same color with fading
-    uint32_t rgb = hsl_to_rgb(hue, 255, current_brightness); // Static hue
+    uint32_t rgb = hsl_to_rgb(led_param.hue, 255, current_brightness); // Static hue
     uint8_t r = (rgb >> 16) & 0xFF;
     uint8_t g = (rgb >> 8) & 0xFF;
     uint8_t b = rgb & 0xFF;
@@ -101,10 +101,68 @@ void effet_Breathing(uint8_t hue, uint8_t brightness)
 }
 
 
-
-void effet_StaticColor(uint8_t hue, uint8_t brightness)
+void effet_Rainbow_Breathing(LEDS led_param)
 {
-	uint32_t rgb_color = hsl_to_rgb(hue, 255, brightness);
+	static int8_t angle = 0;
+	const uint8_t angle_difference = 18;
+
+	static uint8_t current_brightness = 0;
+	static int8_t direction = 1;
+
+	// Adjust brightness
+	current_brightness += direction;
+	if (current_brightness == MIN_BRIGHTNESS || current_brightness == /*MAX*/led_param.brightness) direction = -direction;
+
+
+	for(uint8_t i = 0; i < LED_CNT; i++)
+	{
+		// Set correct LED position
+		uint8_t led_index = led_map[i];
+		// Calculate color
+		uint32_t rgb_color = hsl_to_rgb(angle + ((LED_CNT - 1 - i) * angle_difference), 255, current_brightness);
+		// Set color
+		led_set_RGB(led_index, (rgb_color >> 16) & 0xFF, (rgb_color >> 8) & 0xFF, rgb_color & 0xFF);
+	}
+
+	// Write to LED
+	++angle;
+	led_render();
+}
+
+
+void effet_Key_Responsive(LEDS led_param)
+{
+	static uint8_t current_brightness = 0;
+	static int8_t direction = 1;
+
+	// Adjust brightness
+	current_brightness += direction;
+	if (current_brightness == MIN_BRIGHTNESS || current_brightness == /*MAX*/led_param.brightness) direction = -direction;
+
+	// Set all LEDs to the same color with fading
+	uint32_t rgb = hsl_to_rgb(led_param.hue, 255, led_param.brightness); // Static hue
+	uint8_t r = (rgb >> 16) & 0xFF;
+	uint8_t g = (rgb >> 8) & 0xFF;
+	uint8_t b = rgb & 0xFF;
+
+	for(uint8_t i = 0; i < LED_CNT; i++)
+	{
+		uint8_t led_index = led_map[i];
+
+		if(led_param.position == i)
+		{
+			led_set_RGB(led_index, r, g, b);
+		}
+		else { led_set_RGB(led_index, 0, 0, 0); }
+	}
+
+	led_render();
+}
+
+
+void effet_StaticColor(LEDS led_param)
+{
+	uint32_t rgb_color = hsl_to_rgb(led_param.hue, 255, led_param.brightness);
 	led_set_all_RGB((rgb_color >> 16) & 0xFF, (rgb_color >> 8) & 0xFF, rgb_color & 0xFF);
 	led_render();
 }
