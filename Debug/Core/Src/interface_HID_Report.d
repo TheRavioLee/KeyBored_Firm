@@ -1,4 +1,4 @@
-Core/Src/Processus_Keys.o: ../Core/Src/Processus_Keys.c \
+Core/Src/interface_HID_Report.o: ../Core/Src/interface_HID_Report.c \
  ../Core/Inc/main.h ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h \
  ../Core/Inc/stm32f0xx_hal_conf.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h \
@@ -29,11 +29,15 @@ Core/Src/Processus_Keys.o: ../Core/Src/Processus_Keys.c \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h \
- ../Core/Inc/interface_RGB.h ../Core/Inc/Processus_LEDS.h \
- ../Core/Inc/interfaceMatrice.h ../Core/Inc/main.h \
- ../Core/Inc/interfaceDebouncing.h ../Core/Inc/ServiceBaseTemps_1ms.h \
- ../Core/Inc/Processus_LEDS.h ../Core/Inc/interface_HID_Report.h \
- ../Core/Inc/interface_Key_Config.h ../Core/Inc/HID_Keycodes.h
+ ../Core/Inc/interface_HID_Report.h \
+ ../USB_DEVICE/App/usbd_custom_hid_if.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
+ ../USB_DEVICE/Target/usbd_conf.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:
 ../Core/Inc/stm32f0xx_hal_conf.h:
@@ -65,13 +69,12 @@ Core/Src/Processus_Keys.o: ../Core/Src/Processus_Keys.c \
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h:
-../Core/Inc/interface_RGB.h:
-../Core/Inc/Processus_LEDS.h:
-../Core/Inc/interfaceMatrice.h:
-../Core/Inc/main.h:
-../Core/Inc/interfaceDebouncing.h:
-../Core/Inc/ServiceBaseTemps_1ms.h:
-../Core/Inc/Processus_LEDS.h:
 ../Core/Inc/interface_HID_Report.h:
-../Core/Inc/interface_Key_Config.h:
-../Core/Inc/HID_Keycodes.h:
+../USB_DEVICE/App/usbd_custom_hid_if.h:
+../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
+../USB_DEVICE/Target/usbd_conf.h:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:

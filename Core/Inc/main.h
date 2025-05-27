@@ -37,6 +37,12 @@ extern "C" {
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
 
+#define OS_PORT GPIOA
+#define OS1 OS1_Pin
+#define OS2 OS2_Pin
+#define OS3 OS3_Pin
+
+
 #define NUM_COLS 14
 #define NUM_ROWS 5
 #define NUM_KEYS 64
@@ -65,7 +71,6 @@ extern "C" {
 #define ROW5 ROW5_Pin
 
 #define DEBOUNCE_TIME_MS 5
-
 
 #define SERVICEBASEDETEMPS_NOMBRE_DE_PHASES 4
 #define SCAN_MATRICE_PHASE 0

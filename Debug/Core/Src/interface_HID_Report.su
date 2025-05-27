@@ -1,0 +1,3 @@
+../Core/Src/interface_HID_Report.c:32:6:Press_Key	16	static
+../Core/Src/interface_HID_Report.c:51:6:Release_Key	16	static
+../Core/Src/interface_HID_Report.c:70:6:Send_HID_NKRO_Report	8	static

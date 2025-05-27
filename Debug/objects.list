@@ -3,6 +3,8 @@
 "./Core/Src/ServiceBaseTemps_1ms.o"
 "./Core/Src/interfaceDebouncing.o"
 "./Core/Src/interfaceMatrice.o"
+"./Core/Src/interface_HID_Report.o"
+"./Core/Src/interface_Key_Config.o"
 "./Core/Src/interface_RGB.o"
 "./Core/Src/main.o"
 "./Core/Src/pilote_COL.o"

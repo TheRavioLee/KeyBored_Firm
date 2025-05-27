@@ -91,7 +91,81 @@
 __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DESC_SIZE] __ALIGN_END =
 {
   /* USER CODE BEGIN 0 */
-  0x00,
+
+//		  0x05, 0x01,        // Usage Page (Generic Desktop)
+//		  0x09, 0x06,        // Usage (Keyboard)
+//		  0xA1, 0x01,        // Collection (Application)
+//
+//		  // Modifier Byte (8 bits)
+//		  0x05, 0x07,        //   Usage Page (Keyboard)
+//		  0x19, 0xE0,        //   Usage Minimum (Left Ctrl)
+//		  0x29, 0xE7,        //   Usage Maximum (Right GUI)
+//		  0x15, 0x00,        //   Logical Minimum (0)
+//		  0x25, 0x01,        //   Logical Maximum (1)
+//		  0x75, 0x01,        //   Report Size (1)
+//		  0x95, 0x08,        //   Report Count (8)
+//		  0x81, 0x02,        //   Input (Data, Var, Abs)
+//
+//		  // Reserved Byte
+//		  0x75, 0x08,        //   Report Size (8)
+//		  0x95, 0x01,        //   Report Count (1)
+//		  0x81, 0x03,        //   Input (Const, Var, Abs)
+//
+//		  // Main Key Bitfield (e.g., 104 keys)
+//		  0x05, 0x07,        //   Usage Page (Keyboard)
+//		  0x19, 0x04,        //   Usage Minimum (A)
+//		  0x29, 0xA4,        //   Usage Maximum (used keys)
+//		  0x15, 0x00,        //   Logical Minimum (0)
+//		  0x25, 0x01,        //   Logical Maximum (1)
+//		  0x75, 0x01,        //   Report Size (1)
+//		  0x95, 0xA1,        //   Report Count (161) ; Adjust for your needs
+//		  0x81, 0x02,        //   Input (Data, Var, Abs)
+
+//		 0x05, 0x01,        // Usage Page (Generic Desktop)
+//		 0x09, 0x06,        // Usage (Keyboard)
+//		 0xA1, 0x01,        // Collection (Application)
+//		 0x85, 0x01,        //   Report ID (1)
+//
+//		 0x05, 0x07,        //   Usage Page (Keyboard)
+//		 0x19, 0x00,        //   Usage Minimum (0)
+//		 0x29, 0xE7,        //   Usage Maximum (231)
+//		 0x15, 0x00,        //   Logical Minimum (0)
+//		 0x25, 0x01,        //   Logical Maximum (1)
+//		 0x75, 0x01,        //   Report Size (1)
+//		 0x95, 0xE8,        //   Report Count (232)
+//		 0x81, 0x02,        //   Input (Data, Var, Abs)
+
+		0x05, 0x01,                    // USAGE_PAGE (Generic Desktop)
+		0x09, 0x06,                    // USAGE (Keyboard)
+		0xa1, 0x01,                    // COLLECTION (Application)
+		0x05, 0x07,                    //   USAGE_PAGE (Keyboard)
+		0x19, 0xe0,                    //   USAGE_MINIMUM (Keyboard LeftControl)
+		0x29, 0xe7,                    //   USAGE_MAXIMUM (Keyboard Right GUI)
+		0x15, 0x00,                    //   LOGICAL_MINIMUM (0)
+		0x25, 0x01,                    //   LOGICAL_MAXIMUM (1)
+		0x75, 0x01,                    //   REPORT_SIZE (1)
+		0x95, 0x08,                    //   REPORT_COUNT (8)
+		0x81, 0x02,                    //   INPUT (Data,Var,Abs)
+		0x95, 0x01,                    //   REPORT_COUNT (1)
+		0x75, 0x08,                    //   REPORT_SIZE (8)
+		0x81, 0x03,                    //   INPUT (Cnst,Var,Abs)
+		0x95, 0x05,                    //   REPORT_COUNT (5)
+		0x75, 0x01,                    //   REPORT_SIZE (1)
+		0x05, 0x08,                    //   USAGE_PAGE (LEDs)
+		0x19, 0x01,                    //   USAGE_MINIMUM (Num Lock)
+		0x29, 0x05,                    //   USAGE_MAXIMUM (Kana)
+		0x91, 0x02,                    //   OUTPUT (Data,Var,Abs)
+		0x95, 0x01,                    //   REPORT_COUNT (1)
+		0x75, 0x03,                    //   REPORT_SIZE (3)
+		0x91, 0x03,                    //   OUTPUT (Cnst,Var,Abs)
+		0x95, 0x06,                    //   REPORT_COUNT (6)
+		0x75, 0x08,                    //   REPORT_SIZE (8)
+		0x15, 0x00,                    //   LOGICAL_MINIMUM (0)
+		0x25, 0x65,                    //   LOGICAL_MAXIMUM (101)
+		0x05, 0x07,                    //   USAGE_PAGE (Keyboard)
+		0x19, 0x00,                    //   USAGE_MINIMUM (Reserved (no event indicated))
+		0x29, 0x65,                    //   USAGE_MAXIMUM (Keyboard Application)
+		0x81, 0x00,                    //   INPUT (Data,Ary,Abs)
   /* USER CODE END 0 */
   0xC0    /*     END_COLLECTION	             */
 };

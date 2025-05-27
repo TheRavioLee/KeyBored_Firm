@@ -41,7 +41,7 @@ void ProcessusLEDS_init(void)
   Processus_LEDS_execute[LEDS_RAINBOW_BREATHING_PHASE] = effet_Rainbow_Breathing;
   Processus_LEDS_execute[LEDS_KEY_RESPONSE_PHASE] = effet_Key_Responsive;
   leds.hue = RED_HUE;
-  leds.phase = LEDS_KEY_RESPONSE_PHASE;
+  leds.phase = LEDS_RAINBOW_PHASE;
   leds.brightness = MAX_BRIGHTNESS;
   leds.position = 65;
 }

@@ -13,6 +13,8 @@
 #include <interfaceDebouncing.h>
 #include "ServiceBaseTemps_1ms.h"
 #include "Processus_LEDS.h"
+#include "interface_HID_Report.h"
+#include "interface_Key_Config.h"
 
 uint8_t hue_table[12] = { RED_HUE, ORANGE_HUE, YELLOW_HUE, LIME_HUE, GREEN_HUE, TEAL_HUE,
 						CYAN_HUE, AZURE_HUE, BLUE_HUE, VIOLET_HUE, MAGENTA_HUE, ROSE_HUE };
@@ -89,6 +91,8 @@ KeyState *key_map[64] = { &matriceDebouncing[0][0],
 						&matriceDebouncing[4][13]
 };
 
+extern
+
 //Fonctions privees
 void Process_KEYS(void);
 
@@ -99,29 +103,52 @@ void ProcessusKeys_Init(void)
 
 void Process_KEYS(void)
 {
-	static bool wasActionDone = false;
-	static uint8_t i = 0;
-	static uint8_t last_key;
+//	static bool wasActionDone = false;
+//	static uint8_t i = 0;
+//	static uint8_t last_key;
 
 	for(int key_index = 0; key_index < NUM_KEYS; key_index++)
 	{
-		if(key_map[key_index]->state == PRESSED && wasActionDone == false)
+		if(key_map[key_index]->state == PRESSED && key_index != 61/*&& wasActionDone == false*/)
 		{
-			i++;
-			if(i > 11) { i = 0; }
-			leds.position = key_index;
-//			leds.phase = phase_table[i];
-//			leds.hue = hue_table[i];
+//			i++;
+//			if(i > 11) { i = 0; }
+//			leds.position = key_index;
+////			leds.phase = phase_table[i];
+////			leds.hue = hue_table[i];
+			uint8_t keycode_press;
+//
+//			if(key_map[61]->state == PRESSED)
+//			{
+//				keycode_press = default_keycodes_map[FN_LAYER][key_index];
+//			}
+//			else
+//			{
+				keycode_press = default_keycodes_map[BASE_LAYER][key_index];
+//			}
+			Press_Key(keycode_press);
 
-			wasActionDone = true;
-			last_key = key_index;
+//			wasActionDone = true;
+//			last_key = key_index;
+		}
+		else if(key_map[key_index]->state == IDLE && key_index != 61/*&& wasActionDone == true*/)
+		{
+			uint8_t keycode_release;
+//
+			keycode_release = default_keycodes_map[BASE_LAYER][key_index];
+//
+			Release_Key(keycode_release);
+//
+//			keycode_release = default_keycodes_map[FN_LAYER][key_index];
+//
+//			Release_Key(keycode_release);
+
+//			wasActionDone = false;
+//			leds.position = 65; //release LED
+//			wasActionDone = true;
 		}
 	}
 
-	if(key_map[last_key]->state == IDLE && wasActionDone == true)
-	{
-		wasActionDone = false;
-		leds.position = 65;
-	}
+	Send_HID_NKRO_Report();
 
 }
