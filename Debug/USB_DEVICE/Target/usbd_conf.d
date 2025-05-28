@@ -36,7 +36,7 @@ USB_DEVICE/Target/usbd_conf.o: ../USB_DEVICE/Target/usbd_conf.c \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc/usbd_hid.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
 ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h:
 ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h:
@@ -76,5 +76,5 @@ USB_DEVICE/Target/usbd_conf.o: ../USB_DEVICE/Target/usbd_conf.c \
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:
-../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h:
+../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc/usbd_hid.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:

@@ -1,2 +1,6 @@
-../Core/Src/Processus_LEDS.c:16:6:Process_LEDS	8	static
-../Core/Src/Processus_LEDS.c:35:6:ProcessusLEDS_init	8	static
+../Core/Src/Processus_LEDS.c:29:6:Process_LEDS	72	static
+../Core/Src/Processus_LEDS.c:48:6:LEDS_Increase_Brightness	8	static
+../Core/Src/Processus_LEDS.c:55:6:LEDS_Decrease_Brightness	8	static
+../Core/Src/Processus_LEDS.c:62:6:LEDS_Cycle_Hue	8	static
+../Core/Src/Processus_LEDS.c:70:6:LEDS_Cycle_Effect	8	static
+../Core/Src/Processus_LEDS.c:79:6:ProcessusLEDS_init	16	static

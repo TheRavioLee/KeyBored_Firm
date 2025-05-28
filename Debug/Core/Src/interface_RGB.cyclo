@@ -3,4 +3,4 @@
 ../Core/Src/interface_RGB.c:84:6:effet_Breathing	3
 ../Core/Src/interface_RGB.c:104:6:effet_Rainbow_Breathing	4
 ../Core/Src/interface_RGB.c:133:6:effet_Key_Responsive	5
-../Core/Src/interface_RGB.c:163:6:effet_StaticColor	1
+../Core/Src/interface_RGB.c:167:6:effet_StaticColor	1

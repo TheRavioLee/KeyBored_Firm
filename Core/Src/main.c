@@ -24,8 +24,6 @@
 /* USER CODE BEGIN Includes */
 #include <stdbool.h>
 
-#include "usbd_custom_hid_if.h"
-
 #include "pilote_ROW.h"
 #include "pilote_COL.h"
 #include "pilote_SK6803.h"
@@ -294,7 +292,7 @@ static void MX_DMA_Init(void)
 
   /* DMA interrupt init */
   /* DMA1_Channel4_5_6_7_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Channel4_5_6_7_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA1_Channel4_5_6_7_IRQn, 1, 0);
   HAL_NVIC_EnableIRQ(DMA1_Channel4_5_6_7_IRQn);
 
 }

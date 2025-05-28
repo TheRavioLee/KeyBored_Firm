@@ -149,11 +149,15 @@ void effet_Key_Responsive(LEDS led_param)
 	{
 		uint8_t led_index = led_map[i];
 
-		if(led_param.position == i)
+		switch(leds.position[i])
 		{
+		case true:
 			led_set_RGB(led_index, r, g, b);
+			break;
+		case false:
+			led_set_RGB(led_index, 0, 0, 0);
+			break;
 		}
-		else { led_set_RGB(led_index, 0, 0, 0); }
 	}
 
 	led_render();

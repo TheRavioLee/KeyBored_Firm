@@ -12,18 +12,10 @@
 #include "interfaceMatrice.h"
 #include <interfaceDebouncing.h>
 #include "ServiceBaseTemps_1ms.h"
+#include "Processus_Keys.h"
 #include "Processus_LEDS.h"
 #include "interface_HID_Report.h"
 #include "interface_Key_Config.h"
-
-uint8_t hue_table[12] = { RED_HUE, ORANGE_HUE, YELLOW_HUE, LIME_HUE, GREEN_HUE, TEAL_HUE,
-						CYAN_HUE, AZURE_HUE, BLUE_HUE, VIOLET_HUE, MAGENTA_HUE, ROSE_HUE };
-
-uint8_t brightness_table[12] = { MIN_BRIGHTNESS, BRIGHTNESS1, BRIGHTNESS2, BRIGHTNESS3, BRIGHTNESS4, BRIGHTNESS5,
-								BRIGHTNESS6, BRIGHTNESS7, BRIGHTNESS8, BRIGHTNESS9, BRIGHTNESS10, MAX_BRIGHTNESS};
-
-uint8_t phase_table[5] = { LEDS_RAINBOW_PHASE, LEDS_BREATHING_PHASE, LEDS_STATIC_PHASE, LEDS_RAINBOW_BREATHING_PHASE,
-							LEDS_KEY_RESPONSE_PHASE };
 
 KeyState *key_map[64] = { &matriceDebouncing[0][0],
 						&matriceDebouncing[0][1],
@@ -91,7 +83,7 @@ KeyState *key_map[64] = { &matriceDebouncing[0][0],
 						&matriceDebouncing[4][13]
 };
 
-extern
+keyboardReportDes lastHIDkeyboard = {0, 0, 0, 0, 0, 0, 0, 0};
 
 //Fonctions privees
 void Process_KEYS(void);
@@ -103,52 +95,70 @@ void ProcessusKeys_Init(void)
 
 void Process_KEYS(void)
 {
-//	static bool wasActionDone = false;
-//	static uint8_t i = 0;
-//	static uint8_t last_key;
+	static uint8_t howManyKeysPressed = 0;
+	static bool lastActionDone[64];
+
+	Reset_HID_Report();
 
 	for(int key_index = 0; key_index < NUM_KEYS; key_index++)
 	{
-		if(key_map[key_index]->state == PRESSED && key_index != 61/*&& wasActionDone == false*/)
+		if(key_map[key_index]->state == PRESSED)
 		{
-//			i++;
-//			if(i > 11) { i = 0; }
-//			leds.position = key_index;
-////			leds.phase = phase_table[i];
-////			leds.hue = hue_table[i];
-			uint8_t keycode_press;
-//
-//			if(key_map[61]->state == PRESSED)
-//			{
-//				keycode_press = default_keycodes_map[FN_LAYER][key_index];
-//			}
-//			else
-//			{
-				keycode_press = default_keycodes_map[BASE_LAYER][key_index];
-//			}
-			Press_Key(keycode_press);
-
-//			wasActionDone = true;
-//			last_key = key_index;
+			howManyKeysPressed++;
+			if(howManyKeysPressed > 6)
+			{
+				//DO NOTHING
+			}
+			else
+			{
+				switch(key_map[60]->state)
+				{
+				case PRESSED:
+					switch(key_index)
+					{
+					case UP_KEY:
+						if(lastActionDone[UP_KEY] == false)
+						{ LEDS_Increase_Brightness(); }
+						break;
+					case DOWN_KEY:
+						if(lastActionDone[DOWN_KEY] == false)
+						{ LEDS_Decrease_Brightness(); }
+						break;
+					case LEFT_KEY:
+						if(lastActionDone[LEFT_KEY] == false)
+						{ LEDS_Cycle_Hue(); }
+						break;
+					case RIGHT_KEY:
+						if(lastActionDone[RIGHT_KEY] == false)
+						{ LEDS_Cycle_Effect(); }
+					default:
+						Make_HID_Report(default_keycodes_map[FN_LAYER][key_index], howManyKeysPressed);
+						break;
+					}
+					break;
+				case IDLE:
+					Make_HID_Report(default_keycodes_map[BASE_LAYER][key_index], howManyKeysPressed);
+					break;
+				default:
+					//DO NOTHING IF FN_KEY BOUNCING
+					break;
+				}
+			}
+			lastActionDone[key_index] = true;
+			leds.position[key_index] = true;
 		}
-		else if(key_map[key_index]->state == IDLE && key_index != 61/*&& wasActionDone == true*/)
+		else
 		{
-			uint8_t keycode_release;
-//
-			keycode_release = default_keycodes_map[BASE_LAYER][key_index];
-//
-			Release_Key(keycode_release);
-//
-//			keycode_release = default_keycodes_map[FN_LAYER][key_index];
-//
-//			Release_Key(keycode_release);
-
-//			wasActionDone = false;
-//			leds.position = 65; //release LED
-//			wasActionDone = true;
+			lastActionDone[key_index] = false;
+			leds.position[key_index] = false;
 		}
 	}
 
-	Send_HID_NKRO_Report();
+	if(!Check_HID_Report(lastHIDkeyboard))
+	{
+		Send_HID_Report();
+	}
 
+	lastHIDkeyboard = HIDkeyboard;
+	howManyKeysPressed = 0;
 }

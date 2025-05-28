@@ -1,6 +1,6 @@
 ../Core/Src/interface_RGB.c:31:10:hsl_to_rgb	40	static
-../Core/Src/interface_RGB.c:62:6:effet_Rainbow	40	static
-../Core/Src/interface_RGB.c:84:6:effet_Breathing	32	static
-../Core/Src/interface_RGB.c:104:6:effet_Rainbow_Breathing	40	static
-../Core/Src/interface_RGB.c:133:6:effet_Key_Responsive	40	static
-../Core/Src/interface_RGB.c:163:6:effet_StaticColor	24	static
+../Core/Src/interface_RGB.c:62:6:effet_Rainbow	24	static
+../Core/Src/interface_RGB.c:84:6:effet_Breathing	24	static
+../Core/Src/interface_RGB.c:104:6:effet_Rainbow_Breathing	24	static
+../Core/Src/interface_RGB.c:133:6:effet_Key_Responsive	32	static
+../Core/Src/interface_RGB.c:167:6:effet_StaticColor	24	static

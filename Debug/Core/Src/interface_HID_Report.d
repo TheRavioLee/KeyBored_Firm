@@ -30,8 +30,7 @@ Core/Src/interface_HID_Report.o: ../Core/Src/interface_HID_Report.c \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h \
  ../Core/Inc/interface_HID_Report.h \
- ../USB_DEVICE/App/usbd_custom_hid_if.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc/usbd_hid.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
  ../USB_DEVICE/Target/usbd_conf.h \
@@ -70,8 +69,7 @@ Core/Src/interface_HID_Report.o: ../Core/Src/interface_HID_Report.c \
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h:
 ../Core/Inc/interface_HID_Report.h:
-../USB_DEVICE/App/usbd_custom_hid_if.h:
-../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h:
+../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc/usbd_hid.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
 ../USB_DEVICE/Target/usbd_conf.h:

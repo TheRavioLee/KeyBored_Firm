@@ -7,7 +7,7 @@
 
 #ifndef INC_PROCESSUS_LEDS_H_
 #define INC_PROCESSUS_LEDS_H_
-
+#include <stdbool.h>
 
 #define PROCESSUS_LEDS_NB_PHASE 5
 #define LEDS_RAINBOW_PHASE 0
@@ -16,6 +16,10 @@
 #define LEDS_RAINBOW_BREATHING_PHASE 3
 #define LEDS_KEY_RESPONSE_PHASE 4
 
+void LEDS_Increase_Brightness(void);
+void LEDS_Decrease_Brightness(void);
+void LEDS_Cycle_Hue(void);
+void LEDS_Cycle_Effect(void);
 void ProcessusLEDS_init(void);
 
 typedef struct
@@ -23,7 +27,7 @@ typedef struct
 	uint8_t hue;
 	uint8_t brightness;
 	uint8_t phase;
-	uint8_t position;
+	bool position[64];
 } LEDS;
 
 extern LEDS leds;

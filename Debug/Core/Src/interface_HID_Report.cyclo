@@ -1,3 +1,4 @@
-../Core/Src/interface_HID_Report.c:32:6:Press_Key	3
-../Core/Src/interface_HID_Report.c:51:6:Release_Key	3
-../Core/Src/interface_HID_Report.c:70:6:Send_HID_NKRO_Report	1
+../Core/Src/interface_HID_Report.c:16:6:Reset_HID_Report	1
+../Core/Src/interface_HID_Report.c:27:6:Check_HID_Report	8
+../Core/Src/interface_HID_Report.c:41:6:Make_HID_Report	18
+../Core/Src/interface_HID_Report.c:102:6:Send_HID_Report	1

@@ -32,8 +32,9 @@ Core/Src/Processus_Keys.o: ../Core/Src/Processus_Keys.c \
  ../Core/Inc/interface_RGB.h ../Core/Inc/Processus_LEDS.h \
  ../Core/Inc/interfaceMatrice.h ../Core/Inc/main.h \
  ../Core/Inc/interfaceDebouncing.h ../Core/Inc/ServiceBaseTemps_1ms.h \
- ../Core/Inc/Processus_LEDS.h ../Core/Inc/interface_HID_Report.h \
- ../Core/Inc/interface_Key_Config.h ../Core/Inc/HID_Keycodes.h
+ ../Core/Inc/Processus_Keys.h ../Core/Inc/Processus_LEDS.h \
+ ../Core/Inc/interface_HID_Report.h ../Core/Inc/interface_Key_Config.h \
+ ../Core/Inc/HID_Keycodes.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:
 ../Core/Inc/stm32f0xx_hal_conf.h:
@@ -71,6 +72,7 @@ Core/Src/Processus_Keys.o: ../Core/Src/Processus_Keys.c \
 ../Core/Inc/main.h:
 ../Core/Inc/interfaceDebouncing.h:
 ../Core/Inc/ServiceBaseTemps_1ms.h:
+../Core/Inc/Processus_Keys.h:
 ../Core/Inc/Processus_LEDS.h:
 ../Core/Inc/interface_HID_Report.h:
 ../Core/Inc/interface_Key_Config.h:
