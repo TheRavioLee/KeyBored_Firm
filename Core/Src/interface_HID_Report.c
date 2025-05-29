@@ -7,7 +7,8 @@
 
 #include "main.h"
 #include "interface_HID_Report.h"
-#include "usbd_hid.h"
+#include "usbd_custom_hid_if.h"
+//#include "usbd_hid.h"
 #include "HID_Keycodes.h"
 
 extern USBD_HandleTypeDef hUsbDeviceFS;
@@ -140,10 +141,10 @@ void Make_HID_Report(uint8_t keycode, uint8_t position)
 
 void Send_HID_KeyboardReport(void)
 {
-	USBD_HID_SendReport(&hUsbDeviceFS, &HIDkeyboard, sizeof(HIDkeyboard));
+	USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, &HIDkeyboard, sizeof(HIDkeyboard));
 }
 
 void Send_HID_MediaReport(void)
 {
-	USBD_HID_SendReport(&hUsbDeviceFS, &HIDmedia, sizeof(HIDmedia));
+	USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, &HIDmedia, sizeof(HIDmedia));
 }

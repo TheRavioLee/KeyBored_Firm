@@ -1,7 +1,7 @@
-../Core/Src/interface_HID_Report.c:18:6:isMediaKey	16	static
-../Core/Src/interface_HID_Report.c:36:6:Reset_HID_Report	8	static
-../Core/Src/interface_HID_Report.c:48:6:Check_HID_KeyboardReport	24	static
-../Core/Src/interface_HID_Report.c:62:6:Check_HID_MediaReport	16	static
-../Core/Src/interface_HID_Report.c:74:6:Make_HID_Report	16	static
-../Core/Src/interface_HID_Report.c:141:6:Send_HID_KeyboardReport	8	static
-../Core/Src/interface_HID_Report.c:146:6:Send_HID_MediaReport	8	static
+../Core/Src/interface_HID_Report.c:19:6:isMediaKey	16	static
+../Core/Src/interface_HID_Report.c:37:6:Reset_HID_Report	8	static
+../Core/Src/interface_HID_Report.c:49:6:Check_HID_KeyboardReport	24	static
+../Core/Src/interface_HID_Report.c:63:6:Check_HID_MediaReport	16	static
+../Core/Src/interface_HID_Report.c:75:6:Make_HID_Report	16	static
+../Core/Src/interface_HID_Report.c:142:6:Send_HID_KeyboardReport	8	static
+../Core/Src/interface_HID_Report.c:147:6:Send_HID_MediaReport	8	static
