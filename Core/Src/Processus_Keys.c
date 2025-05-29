@@ -83,7 +83,9 @@ KeyState *key_map[64] = { &matriceDebouncing[0][0],
 						&matriceDebouncing[4][13]
 };
 
-keyboardReportDes lastHIDkeyboard = {0, 0, 0, 0, 0, 0, 0, 0};
+keyboardReport lastHIDkeyboard = {0, 0, 0, 0, 0, 0, 0, 0};
+
+mediaReport lastHIDmedia = {0, 0};
 
 //Fonctions privees
 void Process_KEYS(void);
@@ -111,7 +113,7 @@ void Process_KEYS(void)
 			}
 			else
 			{
-				switch(key_map[60]->state)
+				switch(key_map[FN_KEY]->state)
 				{
 				case PRESSED:
 					switch(key_index)
@@ -132,33 +134,44 @@ void Process_KEYS(void)
 						if(lastActionDone[RIGHT_KEY] == false)
 						{ LEDS_Cycle_Effect(); }
 					default:
-						Make_HID_Report(default_keycodes_map[FN_LAYER][key_index], howManyKeysPressed);
+						switch(key_map[R_ALT_KEY]->state)
+						{
+						case PRESSED:
+							Make_HID_Report(default_keycodes_map[FN_RALT_LAYER][key_index], howManyKeysPressed);
+							break;
+						default:
+							Make_HID_Report(default_keycodes_map[FN_LAYER][key_index], howManyKeysPressed);
+							break;
+						}
 						break;
 					}
 					break;
-				case IDLE:
-					Make_HID_Report(default_keycodes_map[BASE_LAYER][key_index], howManyKeysPressed);
-					break;
 				default:
-					//DO NOTHING IF FN_KEY BOUNCING
+					Make_HID_Report(default_keycodes_map[BASE_LAYER][key_index], howManyKeysPressed);
 					break;
 				}
 			}
 			lastActionDone[key_index] = true;
 			leds.position[key_index] = true;
 		}
-		else
+		if(key_map[key_index]->state == IDLE)
 		{
 			lastActionDone[key_index] = false;
 			leds.position[key_index] = false;
 		}
 	}
 
-	if(!Check_HID_Report(lastHIDkeyboard))
+	if(!Check_HID_KeyboardReport(lastHIDkeyboard))
 	{
-		Send_HID_Report();
+		Send_HID_KeyboardReport();
 	}
 
+	if(!Check_HID_MediaReport(lastHIDmedia))
+	{
+		Send_HID_MediaReport();
+	}
+
+	lastHIDmedia = HIDmedia;
 	lastHIDkeyboard = HIDkeyboard;
 	howManyKeysPressed = 0;
 }

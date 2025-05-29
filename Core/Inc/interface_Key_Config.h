@@ -13,7 +13,7 @@
 #define KEYBOARD_LAYERS 3
 #define BASE_LAYER 0
 #define FN_LAYER 1
-#define FN_SHIFT_LAYER 2
+#define FN_RALT_LAYER 2
 
 
 extern uint8_t default_keycodes_map[KEYBOARD_LAYERS][NUM_KEYS];

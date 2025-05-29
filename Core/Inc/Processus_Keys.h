@@ -10,6 +10,7 @@
 
 //Definitions publiques
 #define FN_KEY 60
+#define R_ALT_KEY 59
 #define UP_KEY 53
 #define DOWN_KEY 62
 #define LEFT_KEY 61

@@ -317,9 +317,12 @@ __ALIGN_BEGIN static uint8_t USBD_HID_DeviceQualifierDesc[USB_LEN_DEV_QUALIFIER_
 
 __ALIGN_BEGIN static uint8_t HID_MOUSE_ReportDesc[HID_MOUSE_REPORT_DESC_SIZE]  __ALIGN_END =
 {
+		// --- Keyboard (Report ID 1) ---
 		0x05, 0x01,                    // USAGE_PAGE (Generic Desktop)
 		0x09, 0x06,                    // USAGE (Keyboard)
 		0xa1, 0x01,                    // COLLECTION (Application)
+	    0x85, 0x01,        			   //   REPORT_ID (1)
+
 		0x05, 0x07,                    //   USAGE_PAGE (Keyboard)
 		0x19, 0xe0,                    //   USAGE_MINIMUM (Keyboard LeftControl)
 		0x29, 0xe7,                    //   USAGE_MAXIMUM (Keyboard Right GUI)
@@ -328,18 +331,22 @@ __ALIGN_BEGIN static uint8_t HID_MOUSE_ReportDesc[HID_MOUSE_REPORT_DESC_SIZE]  _
 		0x75, 0x01,                    //   REPORT_SIZE (1)
 		0x95, 0x08,                    //   REPORT_COUNT (8)
 		0x81, 0x02,                    //   INPUT (Data,Var,Abs)
+
 		0x95, 0x01,                    //   REPORT_COUNT (1)
 		0x75, 0x08,                    //   REPORT_SIZE (8)
 		0x81, 0x03,                    //   INPUT (Cnst,Var,Abs)
+
 		0x95, 0x05,                    //   REPORT_COUNT (5)
 		0x75, 0x01,                    //   REPORT_SIZE (1)
 		0x05, 0x08,                    //   USAGE_PAGE (LEDs)
 		0x19, 0x01,                    //   USAGE_MINIMUM (Num Lock)
 		0x29, 0x05,                    //   USAGE_MAXIMUM (Kana)
 		0x91, 0x02,                    //   OUTPUT (Data,Var,Abs)
+
 		0x95, 0x01,                    //   REPORT_COUNT (1)
 		0x75, 0x03,                    //   REPORT_SIZE (3)
 		0x91, 0x03,                    //   OUTPUT (Cnst,Var,Abs)
+
 		0x95, 0x06,                    //   REPORT_COUNT (6)
 		0x75, 0x08,                    //   REPORT_SIZE (8)
 		0x15, 0x00,                    //   LOGICAL_MINIMUM (0)
@@ -348,7 +355,36 @@ __ALIGN_BEGIN static uint8_t HID_MOUSE_ReportDesc[HID_MOUSE_REPORT_DESC_SIZE]  _
 		0x19, 0x00,                    //   USAGE_MINIMUM (Reserved (no event indicated))
 		0x29, 0x65,                    //   USAGE_MAXIMUM (Keyboard Application)
 		0x81, 0x00,                    //   INPUT (Data,Ary,Abs)
-		0xc0                           // END_COLLECTION
+
+		0xC0,                           // END_COLLECTION
+
+		// Report ID 2 - Consumer Control (Media Keys)
+		0x05, 0x0C,                    // USAGE_PAGE (Consumer Devices)
+		0x09, 0x01,                    // USAGE (Consumer Control)
+		0xA1, 0x01,                    // COLLECTION (Application)
+		0x85, 0x02,                    //   REPORT_ID (2)  <-- Optional, for multiple reports
+		0x15, 0x00,                    //   LOGICAL_MINIMUM (0)
+		0x26, 0xFF, 0x03,              //   LOGICAL_MAXIMUM (1023)
+		0x19, 0x00,                    //   USAGE_MINIMUM (0)
+		0x2A, 0xFF, 0x03,              //   USAGE_MAXIMUM (1023)
+		0x75, 0x08,                    //   REPORT_SIZE (16)
+		0x95, 0x01,                    //   REPORT_COUNT (1)
+		0x81, 0x00,                    //   INPUT (Data,Ary,Abs)
+		0xC0,                           // END_COLLECTION
+
+		// --- Custom Data Output (Report ID 3) (Data input from App) ---
+		0x06, 0x00, 0xFF,              // USAGE_PAGE (Vendor Defined Page 1)
+		0x09, 0x01,                    // USAGE (Vendor Usage 1)
+		0xA1, 0x01,                    // COLLECTION (Application)
+		0x85, 0x03,                  //   REPORT_ID (3)
+		0x15, 0x00,                  //   LOGICAL_MINIMUM (0)
+        0x26, 0xFF, 0x00,            //   LOGICAL_MAXIMUM (255)
+		0x75, 0x08,                  //   REPORT_SIZE (8 bits per field)
+		0x95, 192,                   //   REPORT_COUNT (192 bytes)
+		0x09, 0x00,                  //   USAGE (Undefined)
+		0x91, 0x02,                  //   OUTPUT (Data,Var,Abs)
+		0xC0                           // END_COLLECTION
+
 };
 
 /**

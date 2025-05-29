@@ -98,6 +98,17 @@
  * SKIPPED KEYPAD CODES
  */
 
+//MEDIA
+#define KC_PLAY_PAUSE 0xCD
+#define KC_MUTE 0xE2
+#define KC_VOL_UP 0xE9
+#define KC_VOL_DOWN 0xEA
+#define KC_NEXT 0xB5
+#define KC_PREVIOUS 0xB6
+
+#define KC_BRIGHT_DOWN 0x70
+#define KC_BRIGHT_UP 0x6F
+
 //MODIFIERS
 #define KC_LCTRL 0xE0 // LEFT CTRL
 #define KC_LSHIFT 0xE1 // LEFT SHIFT
