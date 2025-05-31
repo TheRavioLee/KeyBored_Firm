@@ -16,6 +16,7 @@
 #define FN_RALT_LAYER 2
 
 #define FN_KEY 60
+#define R_ALT_KEY 59
 
 #define CONFIG_2_FLASH_ADDRESS
 #define CONFIG_3_FLASH_ADDRESS
