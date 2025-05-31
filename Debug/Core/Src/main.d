@@ -36,6 +36,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/pilote_Timer14_1ms.h ../Core/Inc/interfaceMatrice.h \
  ../Core/Inc/main.h ../Core/Inc/interfaceDebouncing.h \
  ../Core/Inc/interface_RGB.h ../Core/Inc/Processus_LEDS.h \
+ ../Core/Inc/interface_Key_Config.h ../Core/Inc/HID_Keycodes.h \
  ../Core/Inc/ServiceBaseTemps_1ms.h ../Core/Inc/Processus_LEDS.h \
  ../Core/Inc/Processus_Keys.h
 ../Core/Inc/main.h:
@@ -81,6 +82,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/interfaceDebouncing.h:
 ../Core/Inc/interface_RGB.h:
 ../Core/Inc/Processus_LEDS.h:
+../Core/Inc/interface_Key_Config.h:
+../Core/Inc/HID_Keycodes.h:
 ../Core/Inc/ServiceBaseTemps_1ms.h:
 ../Core/Inc/Processus_LEDS.h:
 ../Core/Inc/Processus_Keys.h:

@@ -32,6 +32,7 @@
 #include "interfaceMatrice.h"
 #include "interfaceDebouncing.h"
 #include "interface_RGB.h"
+#include "interface_Key_Config.h"
 
 #include "ServiceBaseTemps_1ms.h"
 
@@ -85,6 +86,7 @@ void Main_Init(void)
 	serviceBaseDeTemps_initialise();
 	InterfaceMatrice_Init();
 	InterfaceDebouncing_Init();
+	Key_Config_Init();
 	ProcessusKeys_Init();
 	ProcessusLEDS_init();
 }

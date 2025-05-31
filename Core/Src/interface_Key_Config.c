@@ -363,18 +363,16 @@ uint8_t config3_keycodes_map[KEYBOARD_LAYERS][NUM_KEYS] = {
 
 void Write_KeyConfig_To_Flash(void)
 {
-
+// ecriture flash apres reception output report
 }
 
 void Read_KeyConfig_From_Flash(void)
 {
-
+// lecture flash lors de l'initialisation
 }
 
 void ParseFullBuffer(uint8_t *buffer)
 {
-
-
 
 }
 
