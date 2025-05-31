@@ -37,6 +37,7 @@ void Make_HID_Report(uint8_t keycode, uint8_t position);
 void Reset_HID_Report(void);
 void Send_HID_KeyboardReport(void);
 void Send_HID_MediaReport(void);
+void Handle_Incoming_OUTReport(void);
 
 
 #endif /* INC_INTERFACE_HID_REPORT_H_ */

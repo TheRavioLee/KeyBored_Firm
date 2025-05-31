@@ -117,6 +117,7 @@ void Error_Handler(void);
 #define LEDS_STAT_GPIO_Port GPIOA
 #define OS1_Pin GPIO_PIN_7
 #define OS1_GPIO_Port GPIOA
+#define OS1_EXTI_IRQn EXTI4_15_IRQn
 #define COL1_Pin GPIO_PIN_0
 #define COL1_GPIO_Port GPIOB
 #define COL2_Pin GPIO_PIN_1
@@ -133,8 +134,10 @@ void Error_Handler(void);
 #define COL14_GPIO_Port GPIOB
 #define OS2_Pin GPIO_PIN_8
 #define OS2_GPIO_Port GPIOA
+#define OS2_EXTI_IRQn EXTI4_15_IRQn
 #define OS3_Pin GPIO_PIN_9
 #define OS3_GPIO_Port GPIOA
+#define OS3_EXTI_IRQn EXTI4_15_IRQn
 #define LEDS_OUT_Pin GPIO_PIN_15
 #define LEDS_OUT_GPIO_Port GPIOA
 #define COL4_Pin GPIO_PIN_3

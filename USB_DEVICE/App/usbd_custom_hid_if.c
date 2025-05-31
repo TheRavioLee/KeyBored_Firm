@@ -23,6 +23,8 @@
 
 /* USER CODE BEGIN INCLUDE */
 
+#include "interface_Key_Config.h"
+
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -62,6 +64,8 @@
   */
 
 /* USER CODE BEGIN PRIVATE_DEFINES */
+
+#define REPORT_SIZE 64
 
 /* USER CODE END PRIVATE_DEFINES */
 
@@ -146,22 +150,26 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
 				0x81, 0x00,                    //   INPUT (Data,Ary,Abs)
 				0xC0,                           // END_COLLECTION
 
-				// --- Custom Data Output (Report ID 3) (Data input from App) ---
-				0x06, 0x00, 0xFF,              // USAGE_PAGE (Vendor Defined Page 1)
-				0x09, 0x01,                    // USAGE (Vendor Usage 1)
-				0xA1, 0x01,                    // COLLECTION (Application)
-				0x85, 0x03,                  //   REPORT_ID (3)
-				0x15, 0x00,                  //   LOGICAL_MINIMUM (0)
-		        0x26, 0xFF, 0x00,            //   LOGICAL_MAXIMUM (255)
-				0x75, 0x08,                  //   REPORT_SIZE (8 bits per field)
-				0x95, 192,                   //   REPORT_COUNT (192 bytes)
-				0x09, 0x00,                  //   USAGE (Undefined)
-				0x91, 0x02,                  //   OUTPUT (Data,Var,Abs)
+				// --- Custom Data Output (Report ID 3) ---
+				0x06, 0x00, 0xFF,       // USAGE_PAGE (Vendor Defined Page 1)
+				0x09, 0x01,             // USAGE      (Vendor Usage 1)
+				0xA1, 0x01,             // COLLECTION (Application)
+				0x85, 0x03,           //   REPORT_ID     (3)
+				0x15, 0x00,           //   LOGICAL_MINIMUM  (0)
+				0x26, 0xFF, 0x00,     //   LOGICAL_MAXIMUM  (255)
+				0x75, 0x08,           //   REPORT_SIZE      (8 bits)
+				0x95, 0x40,           //   REPORT_COUNT     (64 bytes)
+				0x19, 0x01,           //   USAGE_MINIMUM    (1)
+				0x29, 0x40,           //   USAGE_MAXIMUM    (64)
+				0x91, 0x02,           //   OUTPUT (Data,Var,Abs)
+
   /* USER CODE END 0 */
   0xC0    /*     END_COLLECTION	             */
 };
 
 /* USER CODE BEGIN PRIVATE_VARIABLES */
+
+uint8_t rxBuffer[REPORT_SIZE];
 
 /* USER CODE END PRIVATE_VARIABLES */
 
@@ -176,6 +184,8 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
 extern USBD_HandleTypeDef hUsbDeviceFS;
 
 /* USER CODE BEGIN EXPORTED_VARIABLES */
+
+
 
 /* USER CODE END EXPORTED_VARIABLES */
 /**
@@ -241,6 +251,26 @@ static int8_t CUSTOM_HID_DeInit_FS(void)
 static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state)
 {
   /* USER CODE BEGIN 6 */
+	USBD_CUSTOM_HID_HandleTypeDef *hhid = (USBD_CUSTOM_HID_HandleTypeDef*)hUsbDeviceFS.pClassData;
+//
+	if (hhid == NULL) return USBD_FAIL;
+//
+	memcpy(rxBuffer, hhid->Report_buf, REPORT_SIZE);
+
+	if (rxBuffer[0] == 0x03) {
+		// Received Report ID 3 — process 192 bytes
+		// Maybe blink LED or set debug pin
+
+		for(int i = 1; i < REPORT_SIZE; i++)
+		{
+			if(i == FN_KEY)
+			{ i++; }
+
+			config2_keycodes_map[FN_LAYER][i] = rxBuffer[i];
+		}
+
+	}
+
 
   return (USBD_OK);
   /* USER CODE END 6 */

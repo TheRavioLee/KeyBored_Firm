@@ -137,17 +137,17 @@ void Process_KEYS(void)
 						switch(key_map[R_ALT_KEY]->state)
 						{
 						case PRESSED:
-							Make_HID_Report(default_keycodes_map[FN_RALT_LAYER][key_index], howManyKeysPressed);
+							Make_HID_Report(Get_Active_Keycode(FN_RALT_LAYER, key_index), howManyKeysPressed);
 							break;
 						default:
-							Make_HID_Report(default_keycodes_map[FN_LAYER][key_index], howManyKeysPressed);
+							Make_HID_Report(Get_Active_Keycode(FN_LAYER, key_index), howManyKeysPressed);
 							break;
 						}
 						break;
 					}
 					break;
 				default:
-					Make_HID_Report(default_keycodes_map[BASE_LAYER][key_index], howManyKeysPressed);
+					Make_HID_Report(Get_Active_Keycode(BASE_LAYER, key_index), howManyKeysPressed);
 					break;
 				}
 			}

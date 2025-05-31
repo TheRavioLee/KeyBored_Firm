@@ -5,3 +5,4 @@
 ../Core/Src/interface_HID_Report.c:75:6:Make_HID_Report	16	static
 ../Core/Src/interface_HID_Report.c:142:6:Send_HID_KeyboardReport	8	static
 ../Core/Src/interface_HID_Report.c:147:6:Send_HID_MediaReport	8	static
+../Core/Src/interface_HID_Report.c:152:6:Handle_Incoming_OUTReport	8	static

@@ -1,0 +1,6 @@
+../Core/Src/interface_Key_Config.c:364:6:Write_KeyConfig_To_Flash	8	static
+../Core/Src/interface_Key_Config.c:369:6:Read_KeyConfig_From_Flash	8	static
+../Core/Src/interface_Key_Config.c:374:6:ParseFullBuffer	16	static
+../Core/Src/interface_Key_Config.c:382:9:Get_Active_Keycode	16	static
+../Core/Src/interface_Key_Config.c:392:6:HAL_GPIO_EXTI_Callback	16	static
+../Core/Src/interface_Key_Config.c:409:6:Key_Config_Init	8	static
