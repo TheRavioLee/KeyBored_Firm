@@ -300,41 +300,20 @@ static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state)
 
 	switch(rxBuffer[0])
 	{
-	case 0x03:
-		for(int i = 1; i < REPORT_SIZE; i++)
-		{
-			if(i == FN_KEY)
-			{ config2_keycodes_map[FN_LAYER][i] = 0x00; }
-
-			else { config2_keycodes_map[FN_LAYER][i] = rxBuffer[i]; }
-		}
+	case ID_CONFIG_2_FN:
+		Write_KeyConfig_To_Flash(CONFIG_2_FN_FLASH_ADDRESS, rxBuffer);
 		break;
-	case 0x04:
-		for(int i = 1; i < REPORT_SIZE; i++)
-		{
-			if(i == FN_KEY || i == R_ALT_KEY)
-			{ config2_keycodes_map[FN_RALT_LAYER][i] = 0x00; }
 
-			else { config2_keycodes_map[FN_RALT_LAYER][i] = rxBuffer[i];}
-		}
+	case ID_CONFIG_2_ALT:
+		Write_KeyConfig_To_Flash(CONFIG_2_ALT_FLASH_ADDRESS, rxBuffer);
 		break;
-	case 0x05:
-		for(int i = 1; i < REPORT_SIZE; i++)
-		{
-			if(i == FN_KEY)
-			{ config3_keycodes_map[FN_LAYER][i] = 0x00; }
 
-			else { config3_keycodes_map[FN_LAYER][i] = rxBuffer[i]; }
-		}
+	case ID_CONFIG_3_FN:
+		Write_KeyConfig_To_Flash(CONFIG_3_FN_FLASH_ADDRESS, rxBuffer);
 		break;
-	case 0x06:
-		for(int i = 1; i < REPORT_SIZE; i++)
-		{
-			if(i == FN_KEY || i == R_ALT_KEY)
-			{ config3_keycodes_map[FN_RALT_LAYER][i] = 0x00; }
 
-			else { config3_keycodes_map[FN_RALT_LAYER][i] = rxBuffer[i]; }
-		}
+	case ID_CONFIG_3_ALT:
+		Write_KeyConfig_To_Flash(CONFIG_3_ALT_FLASH_ADDRESS, rxBuffer);
 		break;
 	}
 

@@ -133,6 +133,7 @@ void Process_KEYS(void)
 					case RIGHT_KEY:
 						if(lastActionDone[RIGHT_KEY] == false)
 						{ LEDS_Cycle_Effect(); }
+						break;
 					default:
 						switch(key_map[R_ALT_KEY]->state)
 						{

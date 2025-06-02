@@ -86,7 +86,6 @@ void Main_Init(void)
 	serviceBaseDeTemps_initialise();
 	InterfaceMatrice_Init();
 	InterfaceDebouncing_Init();
-	Key_Config_Init();
 	ProcessusKeys_Init();
 	ProcessusLEDS_init();
 }
@@ -134,6 +133,7 @@ int main(void)
   MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
 
+  Key_Config_Init();
   piloteTimer14_permetLesInterruptions();
 
   /* USER CODE END 2 */

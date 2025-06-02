@@ -148,8 +148,3 @@ void Send_HID_MediaReport(void)
 {
 	USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, &HIDmedia, sizeof(HIDmedia));
 }
-
-void Handle_Incoming_OUTReport(void)
-{
-
-}
