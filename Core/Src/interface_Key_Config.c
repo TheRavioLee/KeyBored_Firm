@@ -390,7 +390,7 @@ void Write_KeyConfig_To_Flash(uint32_t flash_address, uint8_t *buffer)
 	for (uint32_t i = 1; i < 64; i += 2) {
 		uint16_t halfWord = (uint16_t)(buffer[i] | (buffer[i+1] << 8));
 		status = HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD,
-								   flash_address + (i),
+								   flash_address + (i - 1),
 								  (uint64_t)halfWord);
 		if (status != HAL_OK) {
 			HAL_FLASH_Lock();
